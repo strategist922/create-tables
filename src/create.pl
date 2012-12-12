@@ -19,7 +19,7 @@ eval {
         $client->execute("CREATE TABLE `twitter_tweet` ( `id` string , `mess` string, `hash` string, `rtcnt` INT ) PARTITIONED BY ( `yymmdd` bigint ) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' STORED AS TextFile ");
         $client->execute("CREATE TABLE `twitter_word_index` ( `key_word` string , `cnt` INT, `id` ARRAY<STRING>, `rtcnt` INT ) PARTITIONED BY ( `yymmdd` bigint ) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' COLLECTION ITEMS TERMINATED BY ',' LINES TERMINATED BY '\n' STORED AS TextFile ");
         $client->execute("CREATE TABLE `twitter_pattern_index` ( `first` string , `second` string , `third` string, `cnt` INT, `id` ARRAY<STRING>, `rtcnt` INT ) PARTITIONED BY ( `yymmdd` bigint ) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' COLLECTION ITEMS TERMINATED BY ',' LINES TERMINATED BY '\n' STORED AS TextFile ");
-        $client->execute("CREATE TABLE `twitter_hash_index` ( `hash` string, `cnt` INT, `id` ARRAY<STRING>, `rtcnt` INT ) PARTITIONED BY ( `yymmdd` bigint ) ROW FORMAT DELIMITED FIELDS TERMINATED BY COLLECTION ITEMS TERMINATED BY ',' '\t' LINES TERMINATED BY '\n' STORED AS TextFile ");
+        $client->execute("CREATE TABLE `twitter_hash_index` ( `hash` string, `cnt` INT, `id` ARRAY<STRING>, `rtcnt` INT ) PARTITIONED BY ( `yymmdd` bigint ) ROW FORMAT DELIMITED FIELDS TERMINATED BY  '\t' COLLECTION ITEMS TERMINATED BY ',' LINES TERMINATED BY '\n' STORED AS TextFile ");
         
         
         $transport->close();
